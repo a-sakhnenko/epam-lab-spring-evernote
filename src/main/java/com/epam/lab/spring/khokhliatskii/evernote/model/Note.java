@@ -1,17 +1,38 @@
 package com.epam.lab.spring.khokhliatskii.evernote.model;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(exclude = {"notebook", "tags"})
+@ToString(exclude = {"notebook", "tags"})
+@Entity
 public class Note {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    int id;
-    String name;
-    String body;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Notebook notebook;
-    @ManyToMany(mappedBy = "notes")
-    Set<Tag> tags = new HashSet<Tag>();
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    private String body;
+
+    @ManyToOne
+    @JoinColumn(name = "note_id")
+    private Notebook notebook;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "notes_tags",
+            joinColumns = @JoinColumn(
+                    name = "note_id",
+                    referencedColumnName = "id",
+                    nullable = false),
+            inverseJoinColumns = @JoinColumn(
+                    name = "tag_id",
+                    referencedColumnName = "id",
+                    nullable = false))
+    private Set<Tag> tags = new HashSet<>();
 }
