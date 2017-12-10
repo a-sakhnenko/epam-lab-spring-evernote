@@ -1,4 +1,4 @@
-package com.epam.lab.spring.khokhliatskii.evernote.service.impl;
+package com.epam.lab.spring.khokhliatskii.evernote.service;
 
 import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class UserServiceImplTest {
+public class UserServiceTest {
 
     @Autowired
     private UserService userService;
