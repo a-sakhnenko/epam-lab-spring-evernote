@@ -1,17 +1,23 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service;
 
+import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
 
-import static org.junit.Assert.*;
-
+//@ContextConfiguration(classes = AppConfig.class, locations = "classpath:spring-config.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
 public class UserServiceTest {
 
     @Autowired
@@ -22,10 +28,18 @@ public class UserServiceTest {
     }
 
     @Test
-    public void userDaoTestOne() throws Exception {
-        System.out.println();
-        List<User> users = userService.getAll();
-        assertNotNull(users);
-        assertFalse(users.isEmpty());
+    @Transactional
+    @Ignore
+    public void createUser() throws Exception {
+        User user = new User();
+        user.setEmail("First@User.com");
+        user.setPassword("1");
+        userService.save(user);
+        assertNotNull(userService.getAll());
     }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
 }

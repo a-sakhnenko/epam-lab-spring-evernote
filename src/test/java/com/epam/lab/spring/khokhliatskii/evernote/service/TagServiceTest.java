@@ -1,24 +1,27 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service;
 
-import com.epam.lab.spring.khokhliatskii.evernote.config.AppConfig;
+import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.TagService;
+import com.epam.lab.spring.khokhliatskii.evernote.util.TestEntityBuilder;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@ContextConfiguration(classes = TestConfig.class)
 public class TagServiceTest {
+
+    @Autowired
+    private TestEntityBuilder testEntityBuilder;
 
     @Autowired
     private TagService tagService;
@@ -29,18 +32,12 @@ public class TagServiceTest {
 
     @Test
     @Transactional
-    public void createMark() throws Exception {
+    @Ignore
+    public void createTag() throws Exception {
         Tag tag = new Tag();
-        tag.setType("Super");
-        boolean operation = tagService.createMark(tag);
-        System.out.println("******************");
-        System.out.println(operation);
-
-        List<Tag> tags = tagService.getAllMarks();
-        for (Tag t : tags){
-            System.out.println(t);
-        }
-
+        tag.setName("First Test Tag");
+        tagService.save(tag);
+        assertNotNull(tagService.getAll());
     }
 
     @After
