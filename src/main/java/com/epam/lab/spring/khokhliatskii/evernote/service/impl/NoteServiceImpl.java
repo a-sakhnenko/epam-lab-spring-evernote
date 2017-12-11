@@ -38,7 +38,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public Note findById(int id) {
-        return noteDao.findOne(id);
+        return noteDao.findById(id).get();
     }
 
     @Override

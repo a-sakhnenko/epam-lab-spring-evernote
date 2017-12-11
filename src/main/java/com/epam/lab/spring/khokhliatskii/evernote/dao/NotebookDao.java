@@ -13,7 +13,5 @@ public interface NotebookDao extends JpaRepository<Notebook, Integer> {
     @Nullable
     Notebook findOneByName(String name);
 
-    @Nullable
-    Notebook findOne(int id);
-
+    Notebook findByName(String name);
 }

@@ -11,9 +11,6 @@ public interface TagDao extends JpaRepository<Tag, Integer> {
     @Nullable
     Tag findOneByName(String name);
 
-    @Nullable
-    Tag findOne(int id);
-
 
 
 }
