@@ -42,8 +42,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public boolean isExists(String email) {
-        return noteDao.findOneByName(email) != null;
+    public boolean isExists(String name) {
+        return noteDao.findOneByName(name) != null;
     }
 
 }

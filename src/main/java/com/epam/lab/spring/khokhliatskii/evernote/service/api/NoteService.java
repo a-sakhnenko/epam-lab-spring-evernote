@@ -16,7 +16,7 @@ public interface NoteService {
 
     Note findById(int id);
 
-    boolean isExists(String email);
+    boolean isExists(String name);
 
 
 }
