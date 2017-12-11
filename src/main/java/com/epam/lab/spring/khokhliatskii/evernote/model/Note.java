@@ -16,11 +16,14 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
     private String name;
+
     private String body;
 
     @ManyToOne
-    @JoinColumn(name = "note_id")
+    @JoinColumn(name = "notebook_id", nullable = false)
     private Notebook notebook;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
