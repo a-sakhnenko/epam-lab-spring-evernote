@@ -1,4 +1,4 @@
-package com.epam.lab.spring.khokhliatskii.evernote.service;
+package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
 import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
@@ -62,6 +62,8 @@ public class NoteServiceTest {
         noteService.save(note);
         assertNotNull(noteService.getAll());
     }
+
+
 
     @After
     public void tearDown() throws Exception {

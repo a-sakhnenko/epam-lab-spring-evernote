@@ -32,7 +32,7 @@ public class TestConfig {
         EmbeddedDatabase database = builder
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("schema.sql")
-                //.addScript("inserts.sql")
+                .addScript("insert.sql")
                 .build();
         return database;
     }
