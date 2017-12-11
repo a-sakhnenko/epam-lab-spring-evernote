@@ -39,7 +39,7 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public Notebook findById(int id) {
-        return notebookDao.findOne(id);
+        return notebookDao.findById(id).get();
     }
 
     @Override

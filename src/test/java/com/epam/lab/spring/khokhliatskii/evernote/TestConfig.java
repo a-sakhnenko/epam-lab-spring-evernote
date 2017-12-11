@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+@Configuration
 @EnableJpaRepositories(basePackages = "com.epam.lab.spring.khokhliatskii.evernote.dao")
 @ComponentScan(basePackageClasses = TestEntityBuilder.class, basePackages = "com.epam.lab.spring.khokhliatskii.evernote")
 @PropertySource("persistence.yml")
@@ -37,22 +38,23 @@ public class TestConfig {
     }
 
 
-    @Bean
-    public JpaVendorAdapter jpaVendorAdapter() {
-        HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
-        bean.setDatabase(Database.H2);
-        //bean.setDatabase(Database.POSTGRESQL);
-        bean.setGenerateDdl(true);
-        return bean;
-    }
+//    @Bean
+//    public JpaVendorAdapter jpaVendorAdapter() {
+//        HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
+//        bean.setDatabase(Database.H2);
+//        //bean.setDatabase(Database.POSTGRESQL);
+//        bean.setGenerateDdl(true);
+//        return bean;
+//    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+            DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setJpaVendorAdapter(jpaVendorAdapter);
+//        em.setJpaVendorAdapter(jpaVendorAdapter);
         em.setPackagesToScan("com.epam.lab.spring.khokhliatskii.evernote.model");
+        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }
 

@@ -11,8 +11,5 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Nullable
     User findOneByEmail(String email);
 
-    @Nullable
-    User findOne(int id);
-
 
 }

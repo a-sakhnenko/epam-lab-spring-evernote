@@ -29,7 +29,7 @@ public class UserServiceTest {
 
     @Test
     @Transactional
-    @Ignore
+//    @Ignore
     public void createUser() throws Exception {
         User user = new User();
         user.setEmail("First@User.com");

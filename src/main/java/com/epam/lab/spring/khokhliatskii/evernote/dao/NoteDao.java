@@ -11,6 +11,4 @@ public interface NoteDao extends JpaRepository<Note, Integer> {
     @Nullable
     Note findOneByName(String name);
 
-    @Nullable
-    Note findOne(int id);
 }
