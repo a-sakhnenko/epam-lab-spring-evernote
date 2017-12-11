@@ -1,12 +1,15 @@
-package com.epam.lab.spring.khokhliatskii.evernote.service;
+package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
 import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
-import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
-import com.epam.lab.spring.khokhliatskii.evernote.service.api.TagService;
+import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
+
+import com.epam.lab.spring.khokhliatskii.evernote.model.User;
+import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
+
+import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
 import com.epam.lab.spring.khokhliatskii.evernote.util.TestEntityBuilder;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +21,16 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
-public class TagServiceTest {
+public class NotebookServiceTest {
 
     @Autowired
     private TestEntityBuilder testEntityBuilder;
 
     @Autowired
-    private TagService tagService;
+    private NotebookService notebookService;
+
+    @Autowired
+    private UserService userService;
 
     @Before
     public void setUp() throws Exception {
@@ -33,11 +39,18 @@ public class TagServiceTest {
     @Test
     @Transactional
     //@Ignore
-    public void createTag() throws Exception {
-        Tag tag = new Tag();
-        tag.setName("First Test Tag");
-        tagService.save(tag);
-        assertNotNull(tagService.getAll());
+    public void createNotebook() throws Exception {
+        User user = new User();
+        user.setEmail("First@User.com");
+        user.setPassword("1");
+        userService.save(user);
+
+        Notebook notebook = new Notebook();
+        notebook.setName("First Test Notebook");
+        notebook.setUser(user);
+        notebookService.save(notebook);
+
+        assertNotNull(notebookService.getAll());
     }
 
     @After

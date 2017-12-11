@@ -1,8 +1,9 @@
-package com.epam.lab.spring.khokhliatskii.evernote.service;
+package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
 import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
-import com.epam.lab.spring.khokhliatskii.evernote.model.User;
-import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
+import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
+import com.epam.lab.spring.khokhliatskii.evernote.service.api.TagService;
+import com.epam.lab.spring.khokhliatskii.evernote.util.TestEntityBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -15,13 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertNotNull;
 
-//@ContextConfiguration(classes = AppConfig.class, locations = "classpath:spring-config.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
-public class UserServiceTest {
+public class TagServiceTest {
 
     @Autowired
-    private UserService userService;
+    private TestEntityBuilder testEntityBuilder;
+
+    @Autowired
+    private TagService tagService;
 
     @Before
     public void setUp() throws Exception {
@@ -29,13 +32,12 @@ public class UserServiceTest {
 
     @Test
     @Transactional
-//    @Ignore
-    public void createUser() throws Exception {
-        User user = new User();
-        user.setEmail("First@User.com");
-        user.setPassword("1");
-        userService.save(user);
-        assertNotNull(userService.getAll());
+    //@Ignore
+    public void createTag() throws Exception {
+        Tag tag = new Tag();
+        tag.setName("First Test Tag");
+        tagService.save(tag);
+        assertNotNull(tagService.getAll());
     }
 
     @After
