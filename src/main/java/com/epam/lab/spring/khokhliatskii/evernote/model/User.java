@@ -23,6 +23,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 
     @JoinTable(name = "users_tags",
