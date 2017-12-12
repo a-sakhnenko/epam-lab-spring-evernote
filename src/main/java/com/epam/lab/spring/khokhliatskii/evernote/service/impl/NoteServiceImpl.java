@@ -16,10 +16,10 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private NoteDao noteDao;
 
-    @Override
-    public Note get(String name) {
-        return noteDao.findOneByName(name);
-    }
+//    @Override
+//    public Note get(String name) {
+//        return noteDao.findOneByName(name);
+//    }
 
     @Override
     public List<Note> getAll() {
@@ -28,6 +28,17 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public Note save(Note note) {
+
+        // checks if this notebook already contains note with such name.
+        // throws RuntimeException if yes.
+        note.getNotebook().getNotes().forEach(
+                existingNote -> {
+                    if (note.getName().equals(existingNote.getName())) {
+                        throw new RuntimeException("Notebook already contains a note with such name.");
+                    }
+                }
+        );
+
         return noteDao.save(note);
     }
 

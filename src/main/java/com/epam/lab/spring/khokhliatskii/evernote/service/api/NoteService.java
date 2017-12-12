@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface NoteService {
 
-    Note get(String name);
+    //Note get(String name);
 
     List<Note> getAll();
 

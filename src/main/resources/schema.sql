@@ -9,14 +9,14 @@ CREATE TABLE notebook
 (
   id      INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
   user_id INTEGER                            NOT NULL,
-  name    VARCHAR                            NOT NULL UNIQUE,
+  name    VARCHAR                            NOT NULL,
   CONSTRAINT notebook_user_id_fk FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE note
 (
   id          INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name        VARCHAR(50)                        NOT NULL UNIQUE,
+  name        VARCHAR(50)                        NOT NULL,
   body        VARCHAR,
   notebook_id INTEGER                            NOT NULL,
   CONSTRAINT note_notebook_id_fk FOREIGN KEY (notebook_id) REFERENCES notebook (id) ON DELETE CASCADE ON UPDATE CASCADE

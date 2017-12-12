@@ -25,7 +25,6 @@ public class User {
 
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-
     @JoinTable(name = "users_tags",
             joinColumns = @JoinColumn(
                     name = "user_id",

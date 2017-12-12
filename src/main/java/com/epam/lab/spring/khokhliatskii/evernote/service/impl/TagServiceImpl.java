@@ -1,13 +1,17 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service.impl;
 
 import com.epam.lab.spring.khokhliatskii.evernote.dao.TagDao;
+import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
+import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -33,6 +37,22 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Tag save(Tag tag) {
+        if (isExists(tag.getName())) {
+            Tag existingTag = get(tag.getName());
+
+            Set<User> users = new HashSet<>();
+            users.addAll(existingTag.getUsers());
+            users.addAll(tag.getUsers());
+            existingTag.setUsers(users);
+
+            Set<Note> notes = new HashSet<>();
+            notes.addAll(existingTag.getNotes());
+            notes.addAll(tag.getNotes());
+            existingTag.setNotes(notes);
+
+            return tagDao.save(existingTag);
+        }
+
         return tagDao.save(tag);
     }
 

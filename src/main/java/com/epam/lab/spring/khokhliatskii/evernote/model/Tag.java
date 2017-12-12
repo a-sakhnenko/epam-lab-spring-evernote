@@ -20,9 +20,9 @@ public class Tag {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Note> notes = new HashSet<>();
 
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
-    private Set<Note> users = new HashSet<>();
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<User> users = new HashSet<>();
 }

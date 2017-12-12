@@ -17,10 +17,10 @@ public class NotebookServiceImpl implements NotebookService {
     @Autowired
     private NotebookDao notebookDao;
 
-    @Override
-    public Notebook get(String name) {
-        return notebookDao.findOneByName(name);
-    }
+//    @Override
+//    public Notebook get(String name) {
+//        return notebookDao.findOneByName(name);
+//    }
 
     @Override
     public List<Notebook> getAll() {
@@ -29,6 +29,17 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public Notebook save(Notebook notebook) {
+
+        // checks if this user already has notebook with such name.
+        // throws RuntimeException if yes.
+        notebook.getUser().getNotebooks().forEach(
+                existingNotebook -> {
+                    if (notebook.getName().equals(existingNotebook.getName())) {
+                        throw new RuntimeException("User already has a notebook with such name.");
+                    }
+                }
+        );
+
         return notebookDao.save(notebook);
     }
 
