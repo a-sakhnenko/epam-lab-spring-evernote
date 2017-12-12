@@ -37,22 +37,11 @@ public class TestConfig {
         return database;
     }
 
-
-//    @Bean
-//    public JpaVendorAdapter jpaVendorAdapter() {
-//        HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
-//        bean.setDatabase(Database.H2);
-//        //bean.setDatabase(Database.POSTGRESQL);
-//        bean.setGenerateDdl(true);
-//        return bean;
-//    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
             DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-//        em.setJpaVendorAdapter(jpaVendorAdapter);
         em.setPackagesToScan("com.epam.lab.spring.khokhliatskii.evernote.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;

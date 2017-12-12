@@ -38,7 +38,6 @@ public class NotebookServiceTest {
 
     @Test
     @Transactional
-    //@Ignore
     public void createNotebook() throws Exception {
         User user = new User();
         user.setEmail("First@User.com");

@@ -41,7 +41,6 @@ public class NoteServiceTest {
 
     @Test
     @Transactional
-    //@Ignore
     public void createNote() throws Exception {
 
         User user = new User();
