@@ -19,39 +19,6 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan("com.epam.lab.spring.khokhliatskii.evernote")
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = "com.epam.lab.spring.khokhliatskii.evernote.dao")
 public class AppConfig {
-//
-//
-//    @Bean
-//    public DataSource dataSource() {
-//        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
-//                .addScript("schema.sql")
-//                .build();
-//    }
-//
-//    @Bean
-//    public JpaVendorAdapter jpaVendorAdapter() {
-//        HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
-//        bean.setDatabase(Database.H2);
-//        //bean.setDatabase(Database.POSTGRESQL);
-//
-//        bean.setGenerateDdl(true);
-//        return bean;
-//    }
-//
-//    @Bean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-//            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
-//        LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
-//        bean.setDataSource(dataSource);
-//        bean.setJpaVendorAdapter(jpaVendorAdapter);
-//        bean.setPackagesToScan("com.epam.lab.spring.khokhliatskii.evernote.model");
-//        return bean;
-//    }
-//
-//    @Bean
-//    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
-//        return new JpaTransactionManager(emf);
-//    }
+
 }

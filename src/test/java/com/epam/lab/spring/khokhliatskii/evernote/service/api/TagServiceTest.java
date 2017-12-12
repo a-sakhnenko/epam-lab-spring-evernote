@@ -32,7 +32,6 @@ public class TagServiceTest {
 
     @Test
     @Transactional
-    //@Ignore
     public void createTag() throws Exception {
         Tag tag = new Tag();
         tag.setName("First Test Tag");
