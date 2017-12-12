@@ -17,15 +17,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "users_tags",
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "users_tags",
             joinColumns = @JoinColumn(
                     name = "user_id",
                     referencedColumnName = "id",
@@ -38,6 +37,6 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "user",
-            fetch = FetchType.LAZY)
+            fetch = FetchType.EAGER)
     private Set<Notebook> notebooks = new HashSet<>();
 }

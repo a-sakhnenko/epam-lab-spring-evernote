@@ -17,15 +17,15 @@ public class Notebook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "notebook",
-            fetch = FetchType.LAZY)
+            fetch = FetchType.EAGER)
     private Set<Note> notes = new HashSet<>();
 }

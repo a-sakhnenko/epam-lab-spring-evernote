@@ -17,7 +17,7 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     private String body;
@@ -27,8 +27,7 @@ public class Note {
     private Notebook notebook;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "notes_tags",
+    @JoinTable(name = "notes_tags",
             joinColumns = @JoinColumn(
                     name = "note_id",
                     referencedColumnName = "id",
