@@ -58,12 +58,15 @@ public class IntegralServiceTest {
             User user = new User();
             user.setEmail(EMAIL + u);
             user.setPassword(PASSWORD_PATTERN);
-            userService.save(user);
+            user = userService.save(user);
 
             for (int i = 0; i < 3; i++) {
                 Notebook notebook = new Notebook();
                 notebook.setName(NOTEBOOK_NAME_PATTERN + u + " " + i);
                 notebook.setUser(user);
+//                Set<Notebook> notebooks = user.getNotebooks();
+//                notebooks.add(notebook);
+//                user.setNotebooks(notebooks);
 
                 System.out.println();
                 System.out.println("notebook from app: " + notebook
@@ -99,7 +102,7 @@ public class IntegralServiceTest {
                 Tag tag = new Tag();
                 tag.setName(TAG_PATTERN + i);
                 tag.setUsers(Collections.singleton(user));
-                tagService.save(tag);
+                tag = tagService.save(tag);
             }
 
             Set<Notebook> notebooks = user.getNotebooks();
@@ -115,7 +118,7 @@ public class IntegralServiceTest {
                     note.setBody(NOTE_BODY_PATTERN + n.getId() + " " + i);
                     note.setNotebook(n);
                     note.setTags(tags);
-                    noteService.save(note);
+                    note = noteService.save(note);
                 }
             }
         }
@@ -132,6 +135,15 @@ public class IntegralServiceTest {
         userService.delete(user);
 
         System.out.println("notebooks after user delete: " + user.getNotebooks().size());
+
+
+        for (Notebook nb : notebookService.getAll()) {
+            System.out.println(nb);
+        }
+
+        for (Note n : noteService.getAll()) {
+            System.out.println(n);
+        }
 
         long count = notebookService.getAll().stream()
                 .filter(notebook ->
