@@ -23,7 +23,9 @@ public class Note {
     private String body;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "notebook_id", nullable = false)
+    @JoinColumn(name = "notebook_id",
+            referencedColumnName = "id",
+            nullable = false)
     private Notebook notebook;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
