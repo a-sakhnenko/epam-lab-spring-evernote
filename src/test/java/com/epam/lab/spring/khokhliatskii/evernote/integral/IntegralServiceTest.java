@@ -118,6 +118,7 @@ public class IntegralServiceTest {
 
     @Test
     @Transactional
+//    @Ignore
     public void cascadeDeleteAllUserNotesAndNotebooks() throws Exception {
 //        User user = userService.get(EMAIL + 1);
 //
