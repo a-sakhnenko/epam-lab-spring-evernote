@@ -32,7 +32,7 @@ spring:
         default_schema: public
 
   datasource:
-    url: jdbc:postgresql://${bcn_adm_db_host:localhost}:${bcn_adm_db_port:5432}/bcn_adm
-    username: root
+    url: jdbc:postgresql://localhost::5432/db_evernote
+    username: postgres
     password: root
     driverClassName: org.postgresql.Driver
