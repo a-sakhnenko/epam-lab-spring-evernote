@@ -12,7 +12,7 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET)
     public String mainPage(Model model) {
         model.addAttribute("message", "Hello!");
-        return "main";
+        return "index";
     }
 
 }
