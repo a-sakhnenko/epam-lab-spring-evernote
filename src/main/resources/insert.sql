@@ -95,23 +95,23 @@ SET note_id = 2, tag_id = 2;
 INSERT INTO notes_tags
 SET note_id = 4, tag_id = 6;
 
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 1;
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 2;
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 3;
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 4;
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 5;
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 6;
-INSERT INTO users_tags
-SET user_id = 1, tag_id = 7;
-INSERT INTO users_tags
-SET user_id = 2, tag_id = 2;
-INSERT INTO users_tags
-SET user_id = 2, tag_id = 3;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 1;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 2;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 3;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 4;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 5;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 6;
+-- INSERT INTO users_tags
+-- SET user_id = 1, tag_id = 7;
+-- INSERT INTO users_tags
+-- SET user_id = 2, tag_id = 2;
+-- INSERT INTO users_tags
+-- SET user_id = 2, tag_id = 3;
 
 

@@ -40,11 +40,6 @@ public class TagServiceImpl implements TagService {
         if (isExists(tag.getName())) {
             Tag existingTag = get(tag.getName());
 
-            Set<User> users = new HashSet<>();
-            users.addAll(existingTag.getUsers());
-            users.addAll(tag.getUsers());
-            existingTag.setUsers(users);
-
             Set<Note> notes = new HashSet<>();
             notes.addAll(existingTag.getNotes());
             notes.addAll(tag.getNotes());

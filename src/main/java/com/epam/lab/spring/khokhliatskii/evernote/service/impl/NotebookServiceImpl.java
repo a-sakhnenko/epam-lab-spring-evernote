@@ -32,6 +32,9 @@ public class NotebookServiceImpl implements NotebookService {
 
         // checks if this user already has notebook with such name.
         // throws RuntimeException if yes.
+
+        // TODO: fix to get data from db
+
         notebook.getUser().getNotebooks().forEach(
                 existingNotebook -> {
                     if (notebook.getName().equals(existingNotebook.getName())) {
