@@ -28,9 +28,13 @@ public class NotebookServiceImpl implements NotebookService {
         return notebookDao.findAll();
     }
 
+
+    //TODO: make method in dao findAllByUserId
     @Override
     public List<Notebook> getAll(int userID) {
-        return notebookDao.findAll().stream().filter(notebook -> notebook.getUser().getId() == userID).collect(Collectors.toList());
+        return notebookDao.findAll().stream()
+                .filter(notebook -> notebook.getUser().getId() == userID)
+                .collect(Collectors.toList());
     }
 
     @Override

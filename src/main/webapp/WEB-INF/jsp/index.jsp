@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title>Hello Spring MVC</title>
+      <title>index page</title>
    </head>
 
    <body>

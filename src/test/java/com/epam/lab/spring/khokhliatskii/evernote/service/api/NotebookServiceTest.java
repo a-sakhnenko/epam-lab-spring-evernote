@@ -4,10 +4,7 @@ import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
 
 import com.epam.lab.spring.khokhliatskii.evernote.model.User;
-import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
 
-import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
-import com.epam.lab.spring.khokhliatskii.evernote.util.TestEntityBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,9 +19,6 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class NotebookServiceTest {
-
-    @Autowired
-    private TestEntityBuilder testEntityBuilder;
 
     @Autowired
     private NotebookService notebookService;

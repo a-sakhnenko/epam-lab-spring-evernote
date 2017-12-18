@@ -17,6 +17,8 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private NoteDao noteDao;
 
+    //TODO: make method that gets list or set by name
+
 //    @Override
 //    public Note get(String name) {
 //        return noteDao.findOneByName(name);

@@ -1,10 +1,8 @@
 package com.epam.lab.spring.khokhliatskii.evernote;
 
-import com.epam.lab.spring.khokhliatskii.evernote.util.TestEntityBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -19,8 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.epam.lab.spring.khokhliatskii.evernote.dao")
-@ComponentScan(basePackageClasses = TestEntityBuilder.class, basePackages = "com.epam.lab.spring.khokhliatskii.evernote")
-@PropertySource("persistence.yml")
+@ComponentScan(basePackages = "com.epam.lab.spring.khokhliatskii.evernote")
 @EnableTransactionManagement
 public class TestConfig {
 

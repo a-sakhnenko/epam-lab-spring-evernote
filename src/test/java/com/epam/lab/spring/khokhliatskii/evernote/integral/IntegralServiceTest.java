@@ -2,29 +2,18 @@ package com.epam.lab.spring.khokhliatskii.evernote.integral;
 
 import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.dao.NotebookDao;
-import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
-import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
-import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
-import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NoteService;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.TagService;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
-import com.epam.lab.spring.khokhliatskii.evernote.util.TestEntityBuilder;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
@@ -35,9 +24,6 @@ public class IntegralServiceTest {
     private static final String NOTEBOOK_NAME_PATTERN = "Test Notebook ";
     private static final String EMAIL = "test@user.";
     private static final String PASSWORD_PATTERN = "1";
-
-    @Autowired
-    private TestEntityBuilder testEntityBuilder;
 
     @Autowired
     private NoteService noteService;

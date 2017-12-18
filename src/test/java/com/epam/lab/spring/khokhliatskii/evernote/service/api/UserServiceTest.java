@@ -18,7 +18,6 @@ import java.util.List;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-//@ContextConfiguration(classes = AppConfig.class, locations = "classpath:spring-config.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class UserServiceTest {
