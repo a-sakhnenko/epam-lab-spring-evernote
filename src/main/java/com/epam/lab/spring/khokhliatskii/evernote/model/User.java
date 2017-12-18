@@ -9,8 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(exclude = {"tags", "notebooks"})
-@ToString(exclude = {"tags", "notebooks"})
+@EqualsAndHashCode(exclude = {"notebooks"})
+@ToString(exclude = {"notebooks"})
 @Entity
 public class User {
     @Id
@@ -22,19 +22,6 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "users_tags",
-            joinColumns = @JoinColumn(
-                    name = "user_id",
-                    referencedColumnName = "id",
-                    nullable = false),
-            inverseJoinColumns = @JoinColumn(
-                    name = "tag_id",
-                    referencedColumnName = "id",
-                    nullable = false))
-    private Set<Tag> tags = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "user",

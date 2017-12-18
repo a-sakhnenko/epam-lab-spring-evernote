@@ -19,3 +19,20 @@ h2:
     settings:
       trace: false
       web-allow-others: false
+
+#spring:
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        default_schema: public
+#
+#  datasource:
+#    url: jdbc:postgresql://localhost::5432/db_evernote
+#    username: postgres
+#    password: root
+#    driverClassName: org.postgresql.Driver

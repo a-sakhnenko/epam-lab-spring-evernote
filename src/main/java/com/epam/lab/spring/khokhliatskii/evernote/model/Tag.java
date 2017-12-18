@@ -9,8 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(exclude = {"notes", "users"})
-@ToString(exclude = {"notes", "users"})
+@EqualsAndHashCode(exclude = {"notes"})
+@ToString(exclude = {"notes"})
 @Entity
 public class Tag {
     @Id
@@ -20,9 +20,6 @@ public class Tag {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
     private Set<Note> notes = new HashSet<>();
-
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<User> users = new HashSet<>();
 }
