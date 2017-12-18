@@ -10,6 +10,8 @@ public interface NotebookService {
 
     List<Notebook> getAll();
 
+    List<Notebook> getAll(int userID);
+
     Notebook save(Notebook notebook);
 
     void delete(Notebook notebook);

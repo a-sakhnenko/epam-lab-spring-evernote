@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -25,6 +26,11 @@ public class NotebookServiceImpl implements NotebookService {
     @Override
     public List<Notebook> getAll() {
         return notebookDao.findAll();
+    }
+
+    @Override
+    public List<Notebook> getAll(int userID) {
+        return notebookDao.findAll().stream().filter(notebook -> notebook.getUser().getId() == userID).collect(Collectors.toList());
     }
 
     @Override

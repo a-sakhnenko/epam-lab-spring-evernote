@@ -10,6 +10,8 @@ public interface NoteService {
 
     List<Note> getAll();
 
+    List<Note> getAll(int userID);
+
     Note save(Note note);
 
     void delete(Note note);
