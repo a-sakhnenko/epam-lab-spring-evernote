@@ -15,6 +15,8 @@ import java.util.List;
 @RequestMapping(value = "/notes")
 public class NoteController {
 
+    private static final int FIRST_USER_ID = 1;
+
     @Autowired
     private NoteService noteService;
 

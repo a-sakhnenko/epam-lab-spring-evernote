@@ -15,12 +15,14 @@ import java.util.List;
 @RequestMapping(value = "/notebooks")
 public class NotebookController {
 
+    private static final int FIRST_USER_ID = 1;
+
     @Autowired
     private NotebookService notebookService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getNotebooks(Model model) {
-        List<Notebook> notebooks = notebookService.getAll();
+        List<Notebook> notebooks = notebookService.getAll(FIRST_USER_ID);
         model.addAttribute("notebooks", notebooks);
 
         return "notebooks";
@@ -34,9 +36,14 @@ public class NotebookController {
         return "notebook";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String saveNotebook(Model model) {
-
+    //FIXME: rewrite as POST
+    @RequestMapping(method = RequestMethod.GET, value = "/new/{name}")
+    public String saveNotebook(Model model, @PathVariable(name = "name") String name) {
+        Notebook notebook = new Notebook();
+        notebook.setName(name);
+        notebook.setUser(notebookService.getAll().get(0).getUser());
+//        notebook.setUser(USER_FROM_SECURITY);
+        notebookService.save(notebook);
         return "redirect:/notebooks";
     }
 
