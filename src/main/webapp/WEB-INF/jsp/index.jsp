@@ -1,10 +1,10 @@
 <html>
    <head>
-      <title>Hello Spring MVC</title>
+      <title>index page</title>
    </head>
 
    <body>
-   tursthshg
+   index page
       <h2>${message}</h2>
    </body>
 </html>

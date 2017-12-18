@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-    <title>Title</title>
+    <title>Notebook</title>
 </head>
 <body>
 <p>${notebook.id} ${notebook.name}</p>
