@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS user
 (
   id       INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
   email    VARCHAR(50)                        NOT NULL UNIQUE,
-  password VARCHAR(50)                        NOT NULL
+  password VARCHAR(50)                        NOT NULL,
+  role     VARCHAR(50)                        NOT NULL DEFAULT 'ROLE_USER'
 );
 
 CREATE TABLE IF NOT EXISTS notebook
@@ -35,7 +36,6 @@ CREATE TABLE IF NOT EXISTS notes_tags
   CONSTRAINT notes_tags_note_id_fk FOREIGN KEY (note_id) REFERENCES note (id),
   CONSTRAINT notes_tags_tag_id_fk FOREIGN KEY (tag_id) REFERENCES tag (id)
 );
-
 
 -- TODO: fix schema to correspond to entities
 
