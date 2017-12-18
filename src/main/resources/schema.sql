@@ -43,3 +43,7 @@ CREATE TABLE notes_tags
 --   CONSTRAINT users_tags_user_id_fk FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
 --   CONSTRAINT notes_tags_tag2_id_fk FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE ON UPDATE CASCADE
 -- );
+
+
+
+-- TODO: fix schema to correspond to entities

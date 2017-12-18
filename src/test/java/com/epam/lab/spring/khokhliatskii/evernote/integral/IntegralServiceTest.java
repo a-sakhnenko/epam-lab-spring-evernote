@@ -56,20 +56,20 @@ public class IntegralServiceTest {
 
     @Before
     public void setUp() throws Exception {
-
-        User user = new User();
-        user.setEmail(EMAIL + "com");
-        user.setPassword(PASSWORD_PATTERN);
-        user = userService.save(user);
-
-        Notebook notebook = new Notebook();
-        notebook.setName(NOTEBOOK_NAME_PATTERN);
-        notebook.setUser(user);
-        user.getNotebooks().add(notebook);
-        notebook = notebookService.save(notebook);
-
-        System.out.println("this user notebooks: "+ userService.get(user.getEmail()).getNotebooks());
-        System.out.println("this notebook user: "+ notebookService.findById(notebook.getId()).getUser());
+//
+//        User user = new User();
+//        user.setEmail(EMAIL + "com");
+//        user.setPassword(PASSWORD_PATTERN);
+//        user = userService.save(user);
+//
+//        Notebook notebook = new Notebook();
+//        notebook.setName(NOTEBOOK_NAME_PATTERN);
+//        notebook.setUser(user);
+//        user.getNotebooks().add(notebook);
+//        notebook = notebookService.save(notebook);
+//
+//        System.out.println("this user notebooks: "+ userService.get(user.getEmail()).getNotebooks());
+//        System.out.println("this notebook user: "+ notebookService.findById(notebook.getId()).getUser());
 
 //
 //        for (int u = 0; u < 4; u++) {
