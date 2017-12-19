@@ -1,14 +1,21 @@
 package com.epam.lab.spring.khokhliatskii.evernote.controllers;
 
 import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
+import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
+import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.ValidationException;
+import java.lang.management.MemoryType;
 import java.util.List;
 
 @Controller
@@ -18,11 +25,17 @@ public class NotebookController {
     private static final int FIRST_USER_ID = 1;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private NotebookService notebookService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getNotebooks(Model model) {
-        List<Notebook> notebooks = notebookService.getAll(FIRST_USER_ID);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName(); //get logged in username
+        User user = userService.get(email);
+        List<Notebook> notebooks = notebookService.getAll(user.getId());
         model.addAttribute("notebooks", notebooks);
 
         return "notebooks";
@@ -36,15 +49,15 @@ public class NotebookController {
         return "notebook";
     }
 
-    //FIXME: rewrite as POST
-    @RequestMapping(method = RequestMethod.GET, value = "/new/{name}")
-    public String saveNotebook(Model model, @PathVariable(name = "name") String name) {
-        Notebook notebook = new Notebook();
-        notebook.setName(name);
-        notebook.setUser(notebookService.getAll().get(0).getUser());
-//        notebook.setUser(USER_FROM_SECURITY);
-        notebookService.save(notebook);
-        return "redirect:/notebooks";
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        public @ResponseBody Integer saveNotebook(@RequestBody @Valid Notebook notebook, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new ValidationException("Notebook has " + bindingResult.getFieldErrorCount() + " validation errors");
+        }
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName(); //get logged in username
+        notebook.setUser(userService.get(email));
+        return notebookService.save(notebook).getId();
     }
 
 

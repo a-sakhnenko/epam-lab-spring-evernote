@@ -1,14 +1,17 @@
 package com.epam.lab.spring.khokhliatskii.evernote.controllers;
 
 import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
+import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.util.List;
 
 @Controller
@@ -36,10 +39,13 @@ public class NoteController {
         return "note";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String saveNotebook(Model model) {
-
-        return "redirect:/notes";
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public @ResponseBody
+    Integer saveNote(@RequestBody @Valid Note note, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new ValidationException("Note has " + bindingResult.getFieldErrorCount() + " validation errors");
+        }
+        return noteService.save(note).getId();
     }
 
 
