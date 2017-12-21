@@ -1,16 +1,25 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nb
-  Date: 18.12.2017
-  Time: 10:01
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Login Page</title>
 </head>
+
 <body>
-Login Page
+<div>
+    <form method="POST" action="${contextPath}/login">
+        <h2>Log in</h2>
+        <div>
+            <input name="username" type="text" placeholder="Username"/>
+            <input name="password" type="password" placeholder="Password"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <button type="submit">Log In</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
+

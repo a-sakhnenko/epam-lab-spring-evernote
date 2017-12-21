@@ -11,7 +11,7 @@
         <intercept-url pattern="/" access="hasAnyRole('ROLE_USER')"/>
         <intercept-url pattern="/notes/**" access="hasAnyRole('ROLE_USER')"/>
         <intercept-url pattern="/notebooks/**" access="hasRole('ROLE_USER')"/>
-        <!--<intercept-url pattern="/tags/**" access="hasRole('ROLE_USER')"/>-->
+        <intercept-url pattern="/tags/**" access="hasRole('ROLE_USER')"/>
 
         <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error"
                     username-parameter="username" password-parameter="password"/>
