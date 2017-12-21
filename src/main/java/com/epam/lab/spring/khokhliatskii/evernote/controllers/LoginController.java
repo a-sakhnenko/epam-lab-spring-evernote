@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String loginPage(Model model) {
+    public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("error", "Username or password is incorrect.");
+        }
+
+        if (logout != null) {
+            model.addAttribute("message", "Logged out successfully.");
+        }
 
         return "login";
     }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public String login(Model model) {
-
-        return "redirect:/notebooks";
-    }
-
 }

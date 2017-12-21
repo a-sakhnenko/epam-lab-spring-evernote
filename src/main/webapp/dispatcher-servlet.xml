@@ -15,4 +15,6 @@
         <property name = "suffix" value = ".jsp" />
     </bean>
 
+    <import resource="appconfig-security.xml"/>
+
 </beans>

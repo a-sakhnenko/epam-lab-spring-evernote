@@ -3,6 +3,7 @@ package com.epam.lab.spring.khokhliatskii.evernote.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,6 +23,10 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    @ColumnDefault(value = "ROLE_USER")
+    private String role;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "user",
