@@ -20,6 +20,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "com.epam.lab.spring.khokhliatskii.evernote.dao")
 @ComponentScan(basePackages = "com.epam.lab.spring.khokhliatskii.evernote")
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class AppConfig {
 
     @Bean

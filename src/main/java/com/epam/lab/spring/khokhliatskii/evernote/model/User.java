@@ -1,5 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -28,6 +29,7 @@ public class User {
     @ColumnDefault(value = "ROLE_USER")
     private String role;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "user",
             fetch = FetchType.EAGER)

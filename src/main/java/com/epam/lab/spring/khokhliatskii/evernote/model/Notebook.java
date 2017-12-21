@@ -1,5 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -20,12 +21,14 @@ public class Notebook {
     @Column(nullable = false)
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id",
             referencedColumnName = "id",
             nullable = false)
     private User user;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "notebook",
             fetch = FetchType.EAGER)

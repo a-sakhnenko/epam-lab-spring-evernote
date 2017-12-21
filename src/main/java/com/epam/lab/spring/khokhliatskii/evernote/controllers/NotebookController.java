@@ -1,5 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.controllers;
 
+import com.epam.lab.spring.khokhliatskii.evernote.aop.LogPerformance;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
 import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
@@ -30,12 +31,14 @@ public class NotebookController {
     @Autowired
     private NotebookService notebookService;
 
+    @LogPerformance
     @RequestMapping(method = RequestMethod.GET)
     public String getNotebooks(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getName(); //get logged in username
-        User user = userService.get(email);
-        List<Notebook> notebooks = notebookService.getAll(user.getId());
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        String email = auth.getName(); //get logged in username
+//        User user = userService.get(email);
+//        List<Notebook> notebooks = notebookService.getAll(user.getId());
+        List<Notebook> notebooks = notebookService.getAll();
         model.addAttribute("notebooks", notebooks);
 
         return "notebooks";

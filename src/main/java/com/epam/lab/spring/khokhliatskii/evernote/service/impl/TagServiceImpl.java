@@ -1,5 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service.impl;
 
+import com.epam.lab.spring.khokhliatskii.evernote.aop.LogPerformance;
 import com.epam.lab.spring.khokhliatskii.evernote.dao.TagDao;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
@@ -25,6 +26,7 @@ public class TagServiceImpl implements TagService {
         return tagDao.findById(id).get();
     }
 
+    @LogPerformance
     @Override
     public Tag get(String name) {
         return tagDao.findOneByName(name);

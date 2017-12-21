@@ -1,5 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
+import com.epam.lab.spring.khokhliatskii.evernote.aop.LogPerformance;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
 
 import java.util.List;

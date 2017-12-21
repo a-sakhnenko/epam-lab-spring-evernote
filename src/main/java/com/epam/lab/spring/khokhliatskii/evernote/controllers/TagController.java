@@ -1,8 +1,8 @@
 package com.epam.lab.spring.khokhliatskii.evernote.controllers;
 
+import com.epam.lab.spring.khokhliatskii.evernote.aop.LogPerformance;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
-import com.epam.lab.spring.khokhliatskii.evernote.service.api.NoteService;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
