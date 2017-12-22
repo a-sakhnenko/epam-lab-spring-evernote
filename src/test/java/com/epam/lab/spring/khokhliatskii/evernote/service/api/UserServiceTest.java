@@ -1,11 +1,9 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
-import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
+import com.epam.lab.spring.khokhliatskii.evernote.config.AppConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.User;
-import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
+@ContextConfiguration(classes = AppConfig.class)
 public class UserServiceTest {
 
     @Autowired
@@ -35,6 +33,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("First@User.com");
         user.setPassword("1");
+        user.setRole("ROLE_USER");
         userService.save(user);
         assertNotNull(userService.getAll());
     }

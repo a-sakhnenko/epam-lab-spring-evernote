@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: nb
@@ -13,7 +15,8 @@
 </head>
 <body>
     <c:forEach items="${notebooks}" var="notebook">
-        <p>${notebook.id} ${notebook.name}</p>
+        <div> NotebookId: <p>${notebook.id}</p> <span> | </span> NotebookName: <p> ${notebook.name}</p></div>
     </c:forEach>
+
 </body>
 </html>
