@@ -44,6 +44,10 @@
         <location>/WEB-INF/jsp/error400.jsp</location>
     </error-page>
 
+    <error-page>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+
     <servlet>
         <servlet-name>evernote</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
