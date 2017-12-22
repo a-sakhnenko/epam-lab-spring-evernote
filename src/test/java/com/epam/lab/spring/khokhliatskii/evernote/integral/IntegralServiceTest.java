@@ -1,6 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.integral;
 
-import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
+import com.epam.lab.spring.khokhliatskii.evernote.config.AppConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.dao.NotebookDao;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NoteService;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
+@ContextConfiguration(classes = AppConfig.class)
 public class IntegralServiceTest {
     private static final String TAG_PATTERN = "Test Tag ";
     private static final String NOTE_NAME_PATTERN = "Test Note ";

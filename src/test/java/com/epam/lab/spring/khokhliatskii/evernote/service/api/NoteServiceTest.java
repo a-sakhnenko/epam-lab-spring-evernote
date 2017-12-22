@@ -1,6 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
-import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
+import com.epam.lab.spring.khokhliatskii.evernote.config.AppConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Note;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
 import com.epam.lab.spring.khokhliatskii.evernote.model.User;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
+@ContextConfiguration(classes = AppConfig.class)
 public class NoteServiceTest {
 
     @Autowired
@@ -39,6 +39,7 @@ public class NoteServiceTest {
         User user = new User();
         user.setEmail("First@User.com");
         user.setPassword("1");
+        user.setRole("ROLE_USER");
         userService.save(user);
 
         Notebook notebook = new Notebook();

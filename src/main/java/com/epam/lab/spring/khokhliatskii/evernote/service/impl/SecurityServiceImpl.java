@@ -24,10 +24,10 @@ public class SecurityServiceImpl implements SecurityService {
 
     //private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
-    @Autowired
+    @Autowired(required = false)
     private AuthenticationManager authenticationManager;
 
-    @Autowired
+    @Autowired(required = false)
     private UserDetailsService userDetailsService;
 
     @Override

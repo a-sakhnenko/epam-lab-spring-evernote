@@ -1,6 +1,6 @@
 package com.epam.lab.spring.khokhliatskii.evernote.service.api;
 
-import com.epam.lab.spring.khokhliatskii.evernote.TestConfig;
+import com.epam.lab.spring.khokhliatskii.evernote.config.AppConfig;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Tag;
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
+@ContextConfiguration(classes = AppConfig.class)
 public class TagServiceTest {
 
     @Autowired
