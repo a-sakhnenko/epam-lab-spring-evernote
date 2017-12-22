@@ -1,14 +1,25 @@
 package com.epam.lab.spring.khokhliatskii.evernote.controllers;
 
+import com.epam.lab.spring.khokhliatskii.evernote.dto.NotebookDto;
 import com.epam.lab.spring.khokhliatskii.evernote.model.Notebook;
+import com.epam.lab.spring.khokhliatskii.evernote.model.User;
 import com.epam.lab.spring.khokhliatskii.evernote.service.api.NotebookService;
+import com.epam.lab.spring.khokhliatskii.evernote.service.api.UserService;
+import com.epam.lab.spring.khokhliatskii.evernote.transformer.NotebookTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.ValidationException;
 import java.util.List;
 
 @Controller
@@ -19,12 +30,16 @@ public class NotebookController {
 
     @Autowired
     private NotebookService notebookService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getNotebooks(Model model) {
-        List<Notebook> notebooks = notebookService.getAll(FIRST_USER_ID);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        User user = userService.get(name);
+        List<Notebook> notebooks = notebookService.getAll(user.getId());
         model.addAttribute("notebooks", notebooks);
-
         return "notebooks";
     }
 
@@ -46,7 +61,4 @@ public class NotebookController {
         notebookService.save(notebook);
         return "redirect:/notebooks";
     }
-
-
-
 }
